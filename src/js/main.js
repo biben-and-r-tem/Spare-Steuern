@@ -31,7 +31,7 @@ $(document).ready(function () {
             }),
             mobMenuSpan1 = $(this).find('span:eq(0)'),
             mobMenuSpan2 = $(this).find('span:eq(2)'),
-            menuA = $(this).find('li a');
+            menuA = $('header .menu').find('li a');
 
         var mobMenu = $('.mob-menu');
         var mobMenuLi = mobMenu.find('li');
