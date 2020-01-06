@@ -1413,7 +1413,7 @@ nav {
 .content-block {
     display: flex;
     justify-content: space-between;
-    overflow-x: hidden;
+    overflow: hidden;
 
     @include tablet {
         flex-direction: column-reverse;

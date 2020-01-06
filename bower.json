@@ -3,14 +3,14 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "owl.carousel": "^2.3.4",
-    "gsap": "^3.0.4",
+    "gsap": "^2.1.3",
     "scrollmagic": "^2.0.7"
   },
   "overrides": {
     "gsap": {
       "main": [
-        "./dist/gsap.js",
-        "./dist/ScrollToPlugin.js"
+        "./src/uncompressed/TweenMax.js",
+        "./src/uncompressed/plugins/ScrollToPlugin.js"
       ]
     },
     "scrollmagic": {

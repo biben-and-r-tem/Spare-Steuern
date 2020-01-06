@@ -243,8 +243,8 @@ $(document).ready(function () {
     var controller = new ScrollMagic.Controller;
 
     $('.title-block').each(function () {
-        var titleBlockTl = new TimelineMax(),
-            titles = $(this).children(),
+        var titleBlockTl = new TimelineMax();
+        var titles = $(this).children(),
             buttons = $(this).siblings('.buttons-block');
 
         if ($(this).parent().hasClass('main-top-block__content')) {
@@ -276,11 +276,6 @@ $(document).ready(function () {
                 reverse: false
             })
 
-            // .setClassToggle(this, 'active')
-            .on('enter leave', () => {
-                $(this).toggleClass('fadeIn');
-            })
-
             // .addIndicators({
             //     name: 'fade-scene',
             //     colorTrigger: 'black',
@@ -296,7 +291,7 @@ $(document).ready(function () {
         var contentBlockTl = new TimelineMax(),
             text = $(this).find('.content-block__text p'),
             img = $(this).find('.content-block__img'),
-            buttons = $(this).find('.no-risks__buttons'),
+            buttons = $(this).find('.buttons-block'),
             signature = $(this).find('.content-block__signature');
 
         contentBlockTl
@@ -320,7 +315,7 @@ $(document).ready(function () {
                 ease: Power1.easeIn
             }, '-=0.5')
         var contentBlockScene = new ScrollMagic.Scene({
-                triggerElement: this.children[1],
+                triggerElement: this,
                 triggerHook: 0.9,
                 reverse: false
             })
@@ -341,9 +336,9 @@ $(document).ready(function () {
             .setTween(contentBlockTl).addTo(controller);
     });
 
-    $('.tabs-list').each(function () {
+    $('.tabs-block').each(function () {
         var tabsListTl = new TimelineMax(),
-            tabsLi = $(this).find('li');
+            tabsLi = $(this).find('.tabs-list__link');
 
         tabsListTl
             .staggerFrom(tabsLi, 1, {

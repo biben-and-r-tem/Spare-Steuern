@@ -50,6 +50,8 @@ const styleFiles = [
         './src/main_files/**/jquery.min.js',
         './src/main_files/**/gsap.js',
         './src/main_files/**/gsap.min.js',
+        './src/main_files/**/TweenMax.js',
+        './src/main_files/**/TweenMax.min.js',
         './src/main_files/**/ScrollToPlugin.js',
         './src/main_files/**/ScrollToPlugin.min.js',
         './src/main_files/**/ScrollMagic.js',
@@ -61,7 +63,7 @@ const styleFiles = [
     ]
 
 //Таск для переноса файлов из bower в gulp
-gulp.task('mainFiles', () => {
+gulp.task('mainFilesRun', () => {
     return gulp.src(mainBowerFiles())
         //Выходная папка для файлов из bower
         .pipe(gulp.dest('./src/main_files'))
@@ -230,6 +232,11 @@ gulp.task('del', () => {
     return del(['build/*'])
 });
 
+//Таск для очистки папки mainFiles
+gulp.task('delMainFiles', () => {
+    return del(['src/main_files/*'])
+});
+
 //Таск для переноса изображений
 gulp.task('img', () => {
     return gulp.src('./src/img/**')
@@ -310,3 +317,5 @@ gulp.task('watchCompress', () => {
 gulp.task('default', gulp.series('del', gulp.parallel('html', 'styles', 'scripts', 'img', 'fonts'), 'watch'));
 //Таск для продакшена, Запускает del, styles, scripts, img-compress
 gulp.task('compress', gulp.series('del', gulp.parallel('htmlMin', 'stylesMin', 'scriptsMin', 'img-compress', 'fonts'), 'watchCompress'));
+//Таск для создания и обновления папки main_files
+gulp.task('mainFiles', gulp.series('delMainFiles', gulp.parallel('mainFilesRun')));

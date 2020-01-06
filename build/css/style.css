@@ -1458,7 +1458,7 @@ nav {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .content-block_img-right {
