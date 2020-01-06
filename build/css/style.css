@@ -1401,6 +1401,7 @@ nav {
   background: #F4F8FF;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
+  position: relative;
 }
 
 .slogans::before,

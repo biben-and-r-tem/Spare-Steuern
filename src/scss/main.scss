@@ -1341,6 +1341,7 @@ nav {
 .slogans {
     background: $color-F4F8FF;
     backdrop-filter: $blur-1;
+    position: relative;
 
     &::before,
     &::after {
