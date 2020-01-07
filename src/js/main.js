@@ -1,144 +1,152 @@
 $(document).ready(function () {
 
-    $('.mob-menu-trigger').each(function () {
+    function cloneMenu() {
+        if (!$('header nav').children().hasClass('mob-menu')) {
+            $('header nav').append('<div class="mob-menu"></div>');
+            $('footer .menu').clone().appendTo('.mob-menu').removeClass().addClass('cloned-menu');
+            $('.cloned-menu li a').append('<span></span>');
+            $('header .phone.btn').appendTo('.mob-menu');
+        }
+    };
 
-        var headerPhone = $('header .phone.btn');
+    if ($(window).outerWidth() <= 992) {
+        cloneMenu();
+    };
 
-        function cloneMenu() {
-            if (!$('header nav').children().hasClass('mob-menu')) {
-                $('header nav').append('<div class="mob-menu"></div>');
-                $('footer .menu').clone().appendTo('.mob-menu').removeClass().addClass('cloned-menu');
-                headerPhone.appendTo('.mob-menu');
-            }
-        };
+    function mainAnimation() {
 
+        $('.mob-menu-trigger').each(function (index, element) {
+
+            var headerMobMenuTl = new TimelineMax({
+                    paused: true
+                }),
+                mobMenuSpan1 = $(this).find('span:eq(0)'),
+                mobMenuSpan2 = $(this).find('span:eq(2)'),
+                mobMenu = $('.mob-menu'),
+                mobMenuLi = mobMenu.find('li'),
+                headerPhone = $('header .phone.btn');
+
+            headerMobMenuTl
+                .to(mobMenu, 0, {
+                    display: 'flex'
+                })
+                .to(mobMenuLi, 0, {
+                    y: 15,
+                    autoAlpha: 0,
+                })
+                .to(headerPhone, 0, {
+                    display: 'flex',
+                    y: 15,
+                    autoAlpha: 0
+                })
+                .to(mobMenuSpan1, 0.4, {
+                    y: 5,
+                    autoAlpha: 0,
+                    ease: Power1.easeOut
+                })
+                .to(mobMenuSpan2, 0.4, {
+                    y: -5,
+                    autoAlpha: 0,
+                    ease: Power1.easeOut
+                }, '-=0.4')
+                .to(mobMenuSpan1, 0.4, {
+                    y: 0,
+                    autoAlpha: 1,
+                    ease: Power1.easeOut
+                })
+                .to(mobMenuSpan2, 0.4, {
+                    y: 0,
+                    autoAlpha: 1,
+                    ease: Power1.easeOut
+                }, '-=0.4')
+                .to(mobMenu, 0.6, {
+                    autoAlpha: 1,
+                    ease: Power1.easeOut
+                }, 0)
+                .staggerTo(mobMenuLi, 0.4, {
+                    y: 0,
+                    autoAlpha: 1,
+                    ease: Power1.easeOut
+                }, 0.08, '-=0.6')
+                .to(headerPhone, 0.08, {
+                    y: 0,
+                    autoAlpha: 1,
+                    ease: Power1.easeOut
+                }, '-=0.2')
+
+            element.animation = headerMobMenuTl;
+
+        });
+    };
+
+    mainAnimation();
+
+    $(window).resize(function () {
         if ($(window).outerWidth() <= 992) {
             cloneMenu();
-        };
+            mainAnimation();
+        } else {
+            $('header .phone.btn').appendTo('header nav');
+            $('.mob-menu').remove();
+            $('.mob-menu-trigger').removeClass('active');
+        }
+    });
 
-        $(window).resize(function () {
-            if ($(window).outerWidth() <= 992) {
-                cloneMenu();
-            } else {
-                headerPhone.appendTo('header nav');
-                $('.mob-menu').remove();
-            }
-        });
+    $('.mob-menu-trigger').click(function (e) {
+        e.preventDefault();
 
-
-        var headerMobMenuTl = new TimelineMax({
-                paused: true
-            }),
-            mobMenuSpan1 = $(this).find('span:eq(0)'),
-            mobMenuSpan2 = $(this).find('span:eq(2)'),
-            menuA = $('header .menu').find('li a');
-
-        var mobMenu = $('.mob-menu');
-        var mobMenuLi = mobMenu.find('li');
-
-        headerMobMenuTl
-            .to(mobMenu, 0, {
-                display: 'flex'
-            })
-            .to(mobMenuLi, 0, {
-                y: 15,
-                autoAlpha: 0,
-            })
-            .to(headerPhone, 0, {
-                display: 'flex',
-                y: 15,
-                autoAlpha: 0
-            })
-            .to(mobMenuSpan1, 0.4, {
-                y: 5,
-                autoAlpha: 0,
-                ease: Power1.easeOut
-            })
-            .to(mobMenuSpan2, 0.4, {
-                y: -5,
-                autoAlpha: 0,
-                ease: Power1.easeOut
-            }, '-=0.4')
-            .to(mobMenuSpan1, 0.4, {
-                y: 0,
-                autoAlpha: 1,
-                ease: Power1.easeOut
-            })
-            .to(mobMenuSpan2, 0.4, {
-                y: 0,
-                autoAlpha: 1,
-                ease: Power1.easeOut
-            }, '-=0.4')
-            .to(mobMenu, 0.6, {
-                autoAlpha: 1,
-                ease: Power1.easeOut
-            }, 0)
-            .staggerTo(mobMenuLi, 0.4, {
-                y: 0,
-                autoAlpha: 1,
-                ease: Power1.easeOut
-            }, 0.08, '-=0.6')
-            .to(headerPhone, 0.08, {
-                y: 0,
-                autoAlpha: 1,
-                ease: Power1.easeOut
-            }, '-=0.2')
-
-        $(this).click(function (e) {
-            e.preventDefault();
-
-            if ($(this).hasClass('active')) {
-                $(this).removeClass('active');
-                headerMobMenuTl.reverse()
-                    .eventCallback("onReverseComplete", function () {
-                        // TweenMax.to(menu, 0, {
-                        //     clearProps: 'all'
-                        // });
-                        // TweenMax.to(mobMenuLi, 0, {
-                        //     clearProps: 'all'
-                        // });
-                        TweenMax.to(headerPhone, 0, {
-                            clearProps: 'all'
-                        });
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            this.animation.reverse()
+                .eventCallback("onReverseComplete", function () {
+                    TweenMax.to('.mob-menu', 0, {
+                        clearProps: 'all'
                     });
-            } else {
-                $(this).addClass('active');
-                headerMobMenuTl.play();
-            }
+                    TweenMax.to('header .phone.btn', 0, {
+                        clearProps: 'all'
+                    });
+                    TweenMax.to('.mob-menu li', 0, {
+                        clearProps: 'all'
+                    });
+                });
+        } else {
+            $(this).addClass('active');
+            this.animation.play();
+        }
+    });
+
+
+    $('header .menu li a').click(function (event) {
+        event.preventDefault();
+
+        var $window = $(window),
+            href = $(this).attr("href"),
+            topY = $(href).offset().top;
+
+        // if ($('.mob-menu').hasClass('active')) {
+        //     headerMobMenuTl.reverse()
+        //         .eventCallback("onReverseComplete", function () {
+        //             TweenMax.to(menu, 0, {
+        //                 clearProps: 'all'
+        //             });
+        //             TweenMax.to(menuLi, 0, {
+        //                 clearProps: 'all'
+        //             });
+        //             TweenMax.to(headerPhone, 0, {
+        //                 clearProps: 'all'
+        //             });
+        //         });
+        //     $('.mob-menu').removeClass('active');
+        // }
+
+        TweenMax.to($window, 1, {
+            scrollTo: {
+                y: topY,
+                autoKill: true
+            },
+            ease: Circ.easeOut
         });
-
-        menuA.click(function (event) {
-            event.preventDefault();
-
-            var $window = $(window),
-                href = $(this).attr("href"),
-                topY = $(href).offset().top;
-
-            // if ($('.mob-menu').hasClass('active')) {
-            //     headerMobMenuTl.reverse()
-            //         .eventCallback("onReverseComplete", function () {
-            //             TweenMax.to(menu, 0, {
-            //                 clearProps: 'all'
-            //             });
-            //             TweenMax.to(menuLi, 0, {
-            //                 clearProps: 'all'
-            //             });
-            //             TweenMax.to(headerPhone, 0, {
-            //                 clearProps: 'all'
-            //             });
-            //         });
-            //     $('.mob-menu').removeClass('active');
-            // }
-
-            TweenMax.to($window, 1, {
-                scrollTo: {
-                    y: topY,
-                    autoKill: true
-                },
-                ease: Circ.easeOut
-            });
-            return false;
-        });
+        return false;
     });
 
 
@@ -396,7 +404,7 @@ $(document).ready(function () {
             .setTween(tabsContentTl).addTo(controller);
     });
 
-    $('.show-hide-block__item').each(function () {
+    $('.features .show-hide-block__item').each(function () {
         var showHideBlockTl = new TimelineMax(),
             itemsContent = $(this).children();
 
@@ -654,7 +662,6 @@ $(window).bind("load resize ready scroll", function () {
 
         navBtn.removeClass('btn_white-tr').addClass('btn_white-blue');
     };
-
 
     if (windowWidth >= 992) {
         if (scrollTop) {

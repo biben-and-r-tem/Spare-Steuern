@@ -35,6 +35,15 @@ body {
     }
 }
 
+a {
+    color: $color-0286FF;
+    transition: 0.6s $ease-in-out-quart;
+
+    &:hover {
+        color: $color-1990FD;
+    }
+}
+
 .container {
     width: 63%;
     max-width: 960px;
@@ -186,78 +195,79 @@ body {
         }
     }
 
-
-    &_white {
-        border: 1px solid $color-ffffff;
-        background: $color-ffffff;
-        color: $color-0286FF;
-
-        i {
-            background: $color-0286FF;
-        }
-    }
-
-    &_white-tr {
-        border: 1px solid $color-ffffff;
-        background: transparent;
-        color: $color-ffffff;
-
-        i,
-        i::before,
-        i::after {
+    &.btn {
+        &_white {
+            border: 1px solid $color-ffffff;
             background: $color-ffffff;
+            color: $color-0286FF;
+
+            i {
+                background: $color-0286FF;
+            }
         }
 
-        &:hover {
-            background: fade-out($color-ffffff, 0.88);
-        }
-    }
-
-    &_white-blue {
-        border: 1px solid $color-0286FF;
-        background: transparent;
-        color: $color-0286FF;
-
-        i,
-        i::before,
-        i::after {
-            background: $color-0286FF;
-        }
-
-        &:hover {
-            border: 1px solid $color-1990FD;
-            color: $color-1990FD;
+        &_white-tr {
+            border: 1px solid $color-ffffff;
+            background: transparent;
+            color: $color-ffffff;
 
             i,
             i::before,
             i::after {
+                background: $color-ffffff;
+            }
+
+            &:hover {
+                background: fade-out($color-ffffff, 0.88);
+            }
+        }
+
+        &_white-blue {
+            border: 1px solid $color-0286FF;
+            background: transparent;
+            color: $color-0286FF;
+
+            i,
+            i::before,
+            i::after {
+                background: $color-0286FF;
+            }
+
+            &:hover {
+                border: 1px solid $color-1990FD;
+                color: $color-1990FD;
+
+                i,
+                i::before,
+                i::after {
+                    background: $color-1990FD;
+                }
+            }
+        }
+
+        &_blue {
+            border: 1px solid $color-0286FF;
+            background: $color-0286FF;
+            color: $color-ffffff;
+
+            i {
+                background: $color-ffffff;
+            }
+
+            &:hover {
+                border: 1px solid $color-1990FD;
                 background: $color-1990FD;
             }
         }
-    }
 
-    &_blue {
-        border: 1px solid $color-0286FF;
-        background: $color-0286FF;
-        color: $color-ffffff;
+        &_blue-white {
+            border: 1px solid $color-ffffff;
+            background: $color-0286FF;
+            color: $color-ffffff;
 
-        i {
-            background: $color-ffffff;
-        }
-
-        &:hover {
-            border: 1px solid $color-1990FD;
-            background: $color-1990FD;
-        }
-    }
-
-    &_blue-white {
-        border: 1px solid $color-ffffff;
-        background: $color-0286FF;
-        color: $color-ffffff;
-
-        i {
-            background: $color-ffffff;
+            i {
+                background: $color-ffffff;
+            }
         }
     }
 
@@ -354,6 +364,16 @@ header {
         }
     }
 
+    li {
+        a {
+            transition: none;
+
+            &:hover {
+                color: initial;
+            }
+        }
+    }
+
     .menu {
 
         @include tablet {
@@ -392,7 +412,8 @@ header {
         height: 100%;
         background: $color-ffffff;
         padding: 30% 0 10% 0;
-        overflow-y: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
         opacity: 0;
         visibility: hidden;
 
@@ -406,12 +427,26 @@ header {
                     margin-bottom: 0;
                 }
 
+                a {
+                    position: relative;
+
+                    span {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                }
             }
         }
 
         .phone {
 
             &.btn {
+                padding: 10px 0;
                 margin-top: 10%;
 
                 @include mobile {
@@ -523,6 +558,28 @@ header {
         @include tablet_md {
             margin-top: -64px;
         }
+
+
+        &_center-bottom {
+            width: 100%;
+            align-items: center;
+            margin-top: initial;
+            margin-top: 259px;
+
+            @include mobile {
+                width: 100%;
+                align-items: center;
+                margin-top: 130px;
+            }
+
+            @include tablet_md {
+                margin-top: 220px;
+            }
+
+            .title-block {
+                text-align: center;
+            }
+        }
     }
 
     .buttons-block {
@@ -595,7 +652,7 @@ header {
 
         path,
         rect {
-            fill: $color-ffffff;
+            fill: $color-F4F8FF;
             width: 100%;
             height: 100%;
         }
@@ -699,20 +756,20 @@ nav {
     }
 }
 
-
-.advantages {
+.advantages,
+.headquarters .content-block {
     position: relative;
-    margin-top: 90px;
+    padding-top: 90px;
     background: $color-F4F8FF;
     padding-bottom: 86px;
 
     @include tablet_md {
-        margin-top: 33px;
+        padding-top: 33px;
         padding-bottom: 38px;
     }
 
     @include tablet {
-        margin-top: 60px;
+        padding-top: 60px;
         padding-bottom: 56px;
     }
 
@@ -729,6 +786,11 @@ nav {
         background-size: cover;
         z-index: 1;
     }
+}
+
+
+
+.advantages {
 
     .container {
         position: relative;
@@ -887,10 +949,21 @@ nav {
         }
 
         img {
+            transform: scale(1);
+            transition: 0.6s $ease-in-out-quart;
+
             @include tablet {
                 display: block;
                 width: 100%;
                 height: 100%;
+            }
+
+            &:hover {
+                transform: scale(1.8) translateY(-10px);
+
+                @include tablet {
+                    transform: scale(1);
+                }
             }
         }
     }
@@ -1417,7 +1490,7 @@ nav {
     overflow: hidden;
 
     @include tablet {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     &_img-right {
@@ -1430,10 +1503,28 @@ nav {
 
         @include tablet {
             padding-right: 8%;
+            flex-direction: column-reverse;
         }
 
         @include desktop_lg {
             padding-left: 8%;
+        }
+    }
+
+    &_img-left {
+        padding-right: 9.6%;
+
+        @include tablet_sm {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        @include tablet {
+            padding-left: 8%;
+        }
+
+        @include desktop_lg {
+            padding-right: 8%;
         }
     }
 
@@ -1531,8 +1622,10 @@ nav {
     }
 
     &__img {
+        position: relative;
         width: 55%;
         margin-top: 67px;
+        z-index: 2;
 
         @include tablet {
             margin-top: 0;
@@ -1654,7 +1747,8 @@ nav {
     }
 }
 
-.country-tabs {
+.country-tabs,
+.meetings {
     padding: 80px 0 45px 0;
 
     .title-block {
@@ -1666,7 +1760,8 @@ nav {
     }
 }
 
-.features {
+.features,
+.imprint-info {
     position: relative;
     background: $color-F4F8FF;
     backdrop-filter: $blur-1;
@@ -1912,6 +2007,10 @@ nav {
         padding: 75px 0 111px 0;
     }
 
+    a {
+        transition: none;
+    }
+
     .title-block {
         @include tablet_md {
             margin-bottom: 50px;
@@ -2102,6 +2201,48 @@ footer {
                     width: fit-content;
                 }
             }
+        }
+    }
+}
+
+.content-contacts-block {
+
+    &__mainlink {
+        font-family: "FuturaPT-Demi";
+        font-weight: 500;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    &__title {
+        display: block;
+        font-family: "Optima-Bold";
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+}
+
+.map {
+    display: block;
+    width: 100%;
+    height: 400px;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.meetings {
+    .tabs-content {
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .map {
+            height: 160px;
         }
     }
 }
