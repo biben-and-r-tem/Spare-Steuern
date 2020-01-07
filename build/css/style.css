@@ -365,6 +365,12 @@
   src: url("../fonts/FuturaPT/FuturaPT-Demi.eot?") format("eot"), url("../fonts/FuturaPT/FuturaPT-Demi.woff") format("woff"), url("../fonts/FuturaPT/FuturaPT-Demi.ttf") format("truetype"), url("../fonts/FuturaPT/FuturaPT-Demi.svg#FuturaPT-Demi") format("svg");
 }
 
+@font-face {
+  font-family: "FuturaPT-Bold";
+  font-weight: bold;
+  src: url("../fonts/FuturaPT/FuturaPT-Bold.eot?") format("eot"), url("../fonts/FuturaPT/FuturaPT-Bold.woff") format("woff"), url("../fonts/FuturaPT/FuturaPT-Bold.ttf") format("truetype"), url("../fonts/FuturaPT/FuturaPT-Bold.svg#FuturaPT-Bold") format("svg");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -916,11 +922,24 @@ nav {
 }
 
 .advantages,
-.headquarters .content-block {
+.headquarters .content-block,
+.privacy-information {
   position: relative;
   padding-top: 90px;
   background: #F4F8FF;
   padding-bottom: 86px;
+}
+
+.advantages .container,
+.headquarters .content-block .container,
+.privacy-information .container {
+  position: relative;
+  z-index: 2;
+}
+
+.advantages .title-block .title-block__title,
+.privacy-information .title-block .title-block__title {
+  text-align: center;
 }
 
 .advantages::before,
@@ -938,16 +957,8 @@ nav {
   z-index: 1;
 }
 
-.advantages .container {
-  position: relative;
-  z-index: 2;
-}
-
-.advantages .title-block .title-block__title {
-  text-align: center;
-}
-
 .tabs-block {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -956,6 +967,7 @@ nav {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  z-index: 2;
 }
 
 .tabs-list__link {
@@ -1679,6 +1691,20 @@ nav {
   margin-bottom: 21px;
 }
 
+.features::before,
+.imprint-info::before,
+.privacy-information::before {
+  content: '';
+  width: 100%;
+  height: 210px;
+  position: absolute;
+  left: 0;
+  background: url(../img/features-bg.svg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
 .features,
 .imprint-info {
   position: relative;
@@ -1689,23 +1715,13 @@ nav {
   margin-top: 227px;
 }
 
-.features::before,
-.imprint-info::before {
-  content: '';
-  width: 100%;
-  height: 210px;
-  position: absolute;
-  top: -210px;
-  left: 0;
-  background: url(../img/features-bg.svg);
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-}
-
 .features .title-block,
 .imprint-info .title-block {
   text-align: center;
+}
+
+.features::before {
+  top: -210px;
 }
 
 .show-hide-block {
@@ -1747,6 +1763,14 @@ nav {
 
 .show-hide-block__item {
   margin-bottom: 48px;
+}
+
+.show-hide-block__text p {
+  margin-bottom: 32px;
+}
+
+.show-hide-block__text p:last-child {
+  margin-bottom: 0;
 }
 
 .show-hide-block__btn {
@@ -2124,6 +2148,11 @@ footer .menu li a {
   padding-bottom: 10px;
 }
 
+.content-contacts-block_margins .content-contacts-block__mainlink,
+.content-contacts-block_margins .content-contacts-block__title {
+  margin-bottom: 32px !important;
+}
+
 .content-contacts-block__mainlink {
   font-family: "FuturaPT-Demi";
   font-weight: 500;
@@ -2157,6 +2186,36 @@ footer .menu li a {
 
 .meetings .tabs-content .map {
   height: 160px;
+}
+
+.imprint-info::before {
+  top: -160px;
+}
+
+.privacy-information::before {
+  bottom: 50%;
+}
+
+.privacy-information::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  background: #F4F8FF;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+}
+
+.privacy-information .content-contacts-block__title {
+  font-family: "FuturaPT-Bold";
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.privacy-information .content-contacts-block__title a {
+  font-family: "FuturaPT-Book";
+  font-weight: normal;
 }
 
 @media (max-width: 1366px) {
@@ -2297,6 +2356,10 @@ footer .menu li a {
   .contacts .title-block__subtitle {
     font-size: 17px;
   }
+
+  .privacy-information .content-contacts-block__title {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -2378,7 +2441,8 @@ footer .menu li a {
   }
 
   .advantages,
-  .headquarters .content-block {
+  .headquarters .content-block,
+  .privacy-information {
     padding-top: 60px;
     padding-bottom: 56px;
   }
@@ -2538,8 +2602,8 @@ footer .menu li a {
     margin-top: 137px;
   }
 
-  .features::before,
-  .imprint-info::before {
+  .features::before {
+    height: 163px;
     top: -163px;
   }
 
@@ -2614,6 +2678,19 @@ footer .menu li a {
     width: -moz-fit-content;
     width: fit-content;
   }
+
+  .headquarters .content-contacts-block {
+    text-align: center;
+  }
+
+  .imprint-info::before {
+    top: -145px;
+    height: 145px;
+  }
+
+  .privacy-information .content-contacts-block__title {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2634,7 +2711,8 @@ footer .menu li a {
   }
 
   .advantages,
-  .headquarters .content-block {
+  .headquarters .content-block,
+  .privacy-information {
     padding-top: 33px;
     padding-bottom: 38px;
   }
@@ -2648,8 +2726,8 @@ footer .menu li a {
     margin-top: 101px;
   }
 
-  .features::before,
-  .imprint-info::before {
+  .features::before {
+    height: 133px;
     top: -133px;
   }
 
@@ -2842,6 +2920,10 @@ footer .menu li a {
   .form-block__inputs-item .btn::placeholder {
     font-size: 14px;
   }
+
+  .content-contacts-block__title {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -2942,6 +3024,27 @@ footer .menu li a {
   .form-block label {
     height: 58px;
     padding: 0 15px;
+  }
+
+  .content-contacts-block__title {
+    font-size: 18px;
+  }
+
+  .map {
+    height: 250px;
+  }
+
+  .meetings .tabs-content .map {
+    height: 250px;
+  }
+
+  .imprint-info::before {
+    top: -79px;
+    height: 79px;
+  }
+
+  .privacy-information .content-contacts-block__title {
+    font-size: 15px;
   }
 }
 
@@ -3048,6 +3151,22 @@ footer .menu li a {
 
   .title-block-left-str__title {
     font-size: 16px;
+  }
+
+  .content-contacts-block__title {
+    font-size: 16px;
+  }
+
+  .map {
+    height: 200px;
+  }
+
+  .meetings .tabs-content .map {
+    height: 200px;
+  }
+
+  .privacy-information .content-contacts-block__title {
+    font-size: 14px;
   }
 }
 /*# sourceMappingURL=style.css.map */

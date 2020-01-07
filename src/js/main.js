@@ -404,7 +404,7 @@ $(document).ready(function () {
             .setTween(tabsContentTl).addTo(controller);
     });
 
-    $('.features .show-hide-block__item').each(function () {
+    $('.show-hide-block__item').each(function () {
         var showHideBlockTl = new TimelineMax(),
             itemsContent = $(this).children();
 

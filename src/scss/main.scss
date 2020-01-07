@@ -757,7 +757,8 @@ nav {
 }
 
 .advantages,
-.headquarters .content-block {
+.headquarters .content-block,
+.privacy-information {
     position: relative;
     padding-top: 90px;
     background: $color-F4F8FF;
@@ -773,6 +774,24 @@ nav {
         padding-bottom: 56px;
     }
 
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.advantages,
+.privacy-information {
+    .title-block {
+
+        .title-block__title {
+            text-align: center;
+        }
+    }
+}
+
+.advantages,
+.headquarters .content-block {
     &::before {
         content: '';
         position: absolute;
@@ -788,26 +807,11 @@ nav {
     }
 }
 
-
-
-.advantages {
-
-    .container {
-        position: relative;
-        z-index: 2;
-    }
-
-    .title-block {
-
-        .title-block__title {
-            text-align: center;
-        }
-    }
-}
-
 .tabs-block {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    z-index: 2;
 
     @include tablet {
         flex-direction: column;
@@ -1761,6 +1765,23 @@ nav {
 }
 
 .features,
+.imprint-info,
+.privacy-information {
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 210px;
+        position: absolute;
+        left: 0;
+        background: url(../img/features-bg.svg);
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+    }
+}
+
+.features,
 .imprint-info {
     position: relative;
     background: $color-F4F8FF;
@@ -1776,29 +1797,24 @@ nav {
         margin-top: 137px;
     }
 
+    .title-block {
+        text-align: center;
+    }
+}
+
+.features {
     &::before {
-        content: '';
-        width: 100%;
-        height: 210px;
-        position: absolute;
         top: -210px;
-        left: 0;
-        background: url(../img/features-bg.svg);
-        background-repeat: no-repeat;
-        background-position: top center;
-        background-size: cover;
 
         @include tablet_md {
+            height: 133px;
             top: -133px;
         }
 
         @include tablet {
+            height: 163px;
             top: -163px;
         }
-    }
-
-    .title-block {
-        text-align: center;
     }
 }
 
@@ -1838,6 +1854,16 @@ nav {
 
     &__item {
         margin-bottom: 48px;
+    }
+
+    &__text {
+        p {
+            margin-bottom: 32px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
 
     &__btn {
@@ -2206,6 +2232,16 @@ footer {
 }
 
 .content-contacts-block {
+    &_margins {
+        .content-contacts-block {
+
+            &__mainlink,
+            &__title {
+                margin-bottom: 32px !important;
+            }
+        }
+    }
+
 
     &__mainlink {
         font-family: "FuturaPT-Demi";
@@ -2220,6 +2256,27 @@ footer {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 10px;
+
+        @include mobile_sm {
+            font-size: 16px;
+        }
+
+        @include mobile {
+            font-size: 18px;
+        }
+
+        @include tablet_sm {
+            font-size: 20px;
+        }
+    }
+}
+
+.headquarters {
+    .content-contacts-block {
+
+        @include tablet {
+            text-align: center;
+        }
     }
 }
 
@@ -2227,6 +2284,14 @@ footer {
     display: block;
     width: 100%;
     height: 400px;
+
+    @include mobile_sm {
+        height: 200px;
+    }
+
+    @include mobile {
+        height: 250px;
+    }
 
     iframe {
         width: 100%;
@@ -2243,6 +2308,79 @@ footer {
 
         .map {
             height: 160px;
+
+            @include mobile_sm {
+                height: 200px;
+            }
+
+            @include mobile {
+                height: 250px;
+            }
         }
     }
+}
+
+.imprint-info {
+    &::before {
+        top: -160px;
+
+        @include mobile {
+            top: -79px;
+            height: 79px;
+        }
+
+        @include tablet {
+            top: -145px;
+            height: 145px;
+        }
+    }
+}
+
+.privacy-information {
+
+    &::before {
+        bottom: 50%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        background: $color-F4F8FF;
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+    }
+
+    .content-contacts-block {
+        &__title {
+            font-family: "FuturaPT-Bold";
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 0;
+
+            @include mobile_sm {
+                font-size: 14px;
+            }
+
+            @include mobile {
+                font-size: 15px;
+            }
+
+            @include tablet {
+                font-size: 16px;
+            }
+
+            @include desktop {
+                font-size: 17px;
+            }
+
+            a {
+                font-family: "FuturaPT-Book";
+                font-weight: normal;
+            }
+        }
+    }
+
+
 }
