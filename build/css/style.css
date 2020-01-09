@@ -787,12 +787,24 @@ header .mob-menu .phone.btn {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-top: initial;
   margin-top: 259px;
 }
 
 .main-top-block__content_center-bottom .title-block {
   text-align: center;
+}
+
+.main-top-block__content_center-bottom .title-block__subtitle {
+  max-width: 700px;
+}
+
+.main-top-block__content_center {
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: initial;
 }
 
 .main-top-block .buttons-block {
@@ -829,11 +841,10 @@ header .mob-menu .phone.btn {
   height: 44px;
 }
 
-.main-top-block__svg-bg path,
-.main-top-block__svg-bg rect {
+.main-top-block__svg-bg path {
   fill: #F4F8FF;
   width: 100%;
-  height: 100%;
+  d: path("M1440 44H1.97573e-05L0 43.5316C612.5 -35.7303 1172.5 11.2973 1440 43.5315L1440 44Z");
 }
 
 nav {
@@ -1175,8 +1186,8 @@ nav {
 
 .play-slider-btn::before {
   content: '';
-  width: 13.58px;
-  height: 18.1px;
+  width: 14px;
+  height: 18px;
   margin-right: -4px;
   -webkit-mask-image: url(../img/btn__play-icon.svg);
   mask-image: url(../img/btn__play-icon.svg);
@@ -1788,28 +1799,36 @@ nav {
   margin-bottom: 21px;
 }
 
-.survey-new {
-  background: url(../img/survey-new-bg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.survey-new,
+.survey {
   height: 613px;
   padding: 88px 0 100px 0;
 }
 
-.survey-new .title-block {
+.survey-new .title-block,
+.survey .title-block {
   color: #ffffff;
   text-align: center;
 }
 
-.survey-new .title-block__subtitle {
+.survey-new .title-block__subtitle,
+.survey .title-block__subtitle {
   font-family: "FuturaPT-Book";
   font-weight: normal;
   line-height: 160%;
   letter-spacing: 0.012em;
 }
 
+.survey-new,
+.survey__bg {
+  background: url(../img/survey-new-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .form-block {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1823,6 +1842,7 @@ nav {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 2;
 }
 
 .form-block .title-block:nth-child(2) {
@@ -1884,6 +1904,15 @@ nav {
   cursor: pointer;
   -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-block__inputs-item .btn:last-child:hover {
+  color: #1990FD;
+  background: #ffffff;
+}
+
+.form-block__inputs-item .btn:last-child:hover i {
+  background: #1990FD;
 }
 
 .form-block__inputs-item .btn::-webkit-input-placeholder {
@@ -2193,17 +2222,7 @@ footer .menu li a {
 }
 
 .privacy-information::before {
-  bottom: 50%;
-}
-
-.privacy-information::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  background: #F4F8FF;
-  width: 100%;
-  height: 50%;
-  bottom: 0;
+  top: 62%;
 }
 
 .privacy-information .content-contacts-block__title {
@@ -2216,6 +2235,39 @@ footer .menu li a {
 .privacy-information .content-contacts-block__title a {
   font-family: "FuturaPT-Book";
   font-weight: normal;
+}
+
+.survey {
+  position: relative;
+  padding-top: 44px;
+  margin-bottom: -64px;
+}
+
+.survey__bg,
+.survey__svg {
+  height: 100%;
+  width: 100%;
+}
+
+.survey__svg path,
+.survey__svg rect {
+  display: block;
+  width: 100%;
+}
+
+.survey__svg rect {
+  height: -webkit-calc(100% - 44px);
+  height: calc(100% - 44px);
+  y: 44px;
+}
+
+.survey__bg {
+  -webkit-clip-path: url(#clip);
+  clip-path: url(#clip);
+  position: absolute;
+  top: -44px;
+  left: 0;
+  z-index: 1;
 }
 
 @media (max-width: 1366px) {
@@ -2731,7 +2783,8 @@ footer .menu li a {
     top: -133px;
   }
 
-  .survey-new {
+  .survey-new,
+  .survey {
     height: 536px;
     padding: 73px 0 78px 0;
   }
@@ -2924,6 +2977,16 @@ footer .menu li a {
   .content-contacts-block__title {
     font-size: 20px;
   }
+
+  .survey__svg rect {
+    height: -webkit-calc(100% - 32px);
+    height: calc(100% - 32px);
+    y: 32px;
+  }
+
+  .survey__bg {
+    top: -32px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -3046,6 +3109,16 @@ footer .menu li a {
   .privacy-information .content-contacts-block__title {
     font-size: 15px;
   }
+
+  .survey__svg rect {
+    height: -webkit-calc(100% - 28px);
+    height: calc(100% - 28px);
+    y: 28px;
+  }
+
+  .survey__bg {
+    topt: -28px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -3110,6 +3183,16 @@ footer .menu li a {
   .no-risks .buttons-block .btn {
     margin-top: 0;
   }
+
+  .survey__svg rect {
+    height: -webkit-calc(100% - 22px);
+    height: calc(100% - 22px);
+    y: 22px;
+  }
+
+  .survey__bg {
+    top: -22px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -3167,6 +3250,16 @@ footer .menu li a {
 
   .privacy-information .content-contacts-block__title {
     font-size: 14px;
+  }
+
+  .survey__svg rect {
+    height: -webkit-calc(100% - 15px);
+    height: calc(100% - 15px);
+    y: 15px;
+  }
+
+  .survey__bg {
+    top: -15px;
   }
 }
 /*# sourceMappingURL=style.css.map */

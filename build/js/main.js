@@ -26076,6 +26076,36 @@ $(window).bind('resize load ready', function () {
 
         }
     });
+
+    $('.survey__svg').each(function () {
+        var width = $(window).width(),
+            widthOuter = $(window).outerWidth(),
+            height = 44;
+
+        if (widthOuter <= 640) {
+            height = 32;
+        }
+        if (widthOuter <= 576) {
+            height = 28;
+        }
+        if (widthOuter <= 480) {
+            height = 22;
+        }
+        if (widthOuter <= 360) {
+            height = 15;
+        }
+
+        function percentCalcMinus(firstValue, percent) {
+            return firstValue * (1 - percent / 100);
+        };
+
+        function percentCalcPlus(firstValue, percent) {
+            return firstValue * (1 + percent / 100);
+        };
+
+        $('.main-top-block__svg-bg').hide();
+        $(this).find('path').attr('d', 'M' + width + ' ' + height + 'H1.' + percentCalcPlus(width, 6675.91) + 'e-05L0 ' + percentCalcMinus(height, 1.06) + 'C' + percentCalcMinus(width, 57.4653) + ' -' + percentCalcMinus(height, 18.79) + ' ' + percentCalcMinus(width, 18.5763) + ' ' + percentCalcMinus(height, 74.32) + ' ' + width + '  ' + percentCalcMinus(height, 1.06) + 'L' + width + ' ' + height + 'Z');
+    });
 });
 
 
