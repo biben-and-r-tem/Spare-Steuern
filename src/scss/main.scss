@@ -2666,30 +2666,28 @@ nav {
             fill: none;
         }
 
-        rect {
-            height: calc(100% - 44px);
-            y: 44px;
+        path {
+            height: 44px;
 
             @include mobile_sm {
-                height: calc(100% - 15px);
-                y: 15px;
+                height: 15px;
             }
 
             @include mobile_md {
-                height: calc(100% - 22px);
-                y: 22px;
+                height: 22px;
             }
 
             @include mobile {
-                height: calc(100% - 28px);
-                y: 28px;
+                height: 28px;
             }
 
             @include tablet_sm {
-                height: calc(100% - 32px);
-                y: 32px;
+                height: 32px;
             }
+        }
 
+        rect {
+            height: 100%;
         }
     }
 

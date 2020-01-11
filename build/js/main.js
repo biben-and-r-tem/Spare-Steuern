@@ -26171,6 +26171,7 @@ $(window).bind('resize load ready', function () {
     $('.survey__svg').each(function () {
         var width = $(window).width(),
             widthOuter = $(window).outerWidth(),
+            rect = $(this).find('rect'),
             height = 44;
 
         if (widthOuter <= 640) {
@@ -26194,6 +26195,7 @@ $(window).bind('resize load ready', function () {
             return firstValue * (1 + percent / 100);
         };
 
+        rect.attr('y', height);
         $('.main-top-block__svg-bg').hide();
         $(this).find('path').attr('d', 'M' + width + ' ' + height + 'H1.' + percentCalcPlus(width, 6675.91) + 'e-05L0 ' + percentCalcMinus(height, 1.06) + 'C' + percentCalcMinus(width, 57.4653) + ' -' + percentCalcMinus(height, 18.79) + ' ' + percentCalcMinus(width, 18.5763) + ' ' + percentCalcMinus(height, 74.32) + ' ' + width + '  ' + percentCalcMinus(height, 1.06) + 'L' + width + ' ' + height + 'Z');
     });

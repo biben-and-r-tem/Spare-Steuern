@@ -2442,10 +2442,12 @@ nav {
   fill: none;
 }
 
+.survey__svg path {
+  height: 44px;
+}
+
 .survey__svg rect {
-  height: -webkit-calc(100% - 44px);
-  height: calc(100% - 44px);
-  y: 44px;
+  height: 100%;
 }
 
 .survey__bg {
@@ -3449,10 +3451,8 @@ footer .menu li a:hover {
     font-size: 20px;
   }
 
-  .survey__svg rect {
-    height: -webkit-calc(100% - 32px);
-    height: calc(100% - 32px);
-    y: 32px;
+  .survey__svg path {
+    height: 32px;
   }
 
   .survey__bg {
@@ -3603,10 +3603,8 @@ footer .menu li a:hover {
     font-size: 15px;
   }
 
-  .survey__svg rect {
-    height: -webkit-calc(100% - 28px);
-    height: calc(100% - 28px);
-    y: 28px;
+  .survey__svg path {
+    height: 28px;
   }
 
   .survey__bg {
@@ -3682,10 +3680,8 @@ footer .menu li a:hover {
     margin-top: 0;
   }
 
-  .survey__svg rect {
-    height: -webkit-calc(100% - 22px);
-    height: calc(100% - 22px);
-    y: 22px;
+  .survey__svg path {
+    height: 22px;
   }
 
   .survey__bg {
@@ -3750,10 +3746,8 @@ footer .menu li a:hover {
     font-size: 14px;
   }
 
-  .survey__svg rect {
-    height: -webkit-calc(100% - 15px);
-    height: calc(100% - 15px);
-    y: 15px;
+  .survey__svg path {
+    height: 15px;
   }
 
   .survey__bg {
