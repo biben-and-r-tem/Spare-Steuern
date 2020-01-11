@@ -26108,11 +26108,12 @@ $(window).bind('resize load ready', function () {
                 $('footer').before('<div class="title-block cloned-title"><div class="title-block__title"></div>');
                 $('.cloned-title .title-block__title').html($('.main-top-block .title-block__title').html());
                 $('.main-top-block .title-block__subtitle').appendTo($('.cloned-title'));
+                $('.cloned-title').css({
+                    'padding-bottom': '60px',
+                    'margin': '0'
+                });
                 $('.main-top-block__svg-bg path').css({
                     'fill': $('.cloned-title').css('background-color')
-                });
-                $('footer').css({
-                    'margin-top': '60px'
                 });
             }
         } else {
@@ -26120,9 +26121,6 @@ $(window).bind('resize load ready', function () {
             $('.cloned-title').remove();
             $('.main-top-block__svg-bg path').css({
                 'fill': $('footer').css('background-color')
-            });
-            $('footer').css({
-                'margin-top': '0'
             });
         }
     };

@@ -2501,7 +2501,7 @@ nav {
 
 .cloned-title {
   background: #F4F8FF;
-  padding: 45px 5% 0 5%;
+  padding: 45px 5% 28px 5%;
 }
 
 .cloned-title .title-block__subtitle {
@@ -3658,6 +3658,10 @@ footer .menu li a:hover {
 
   .survey__bg {
     topt: -28px;
+  }
+
+  .cloned-title {
+    margin: 0;
   }
 
   .thanks-contacts {

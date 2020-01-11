@@ -2788,7 +2788,11 @@ nav {
 
 .cloned-title {
     background: $color-F4F8FF;
-    padding: 45px 5% 0 5%;
+    padding: 45px 5% 28px 5%;
+
+    @include mobile {
+        margin: 0;
+    }
 
     .title-block {
         &__subtitle {
