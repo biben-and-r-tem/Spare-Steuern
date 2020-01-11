@@ -872,7 +872,6 @@ header .mob-menu .phone.btn {
 .main-top-block__svg-bg path {
   fill: #F4F8FF;
   width: 100%;
-  d: path("M1440 44H1.97573e-05L0 43.5316C612.5 -35.7303 1172.5 11.2973 1440 43.5315L1440 44Z");
 }
 
 nav {
@@ -2684,6 +2683,7 @@ footer .menu li a:hover {
   }
 
   .video-slider .owl-carousel .owl-nav {
+    padding-right: 5%;
     height: 163px;
     width: 100%;
   }
