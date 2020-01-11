@@ -545,9 +545,11 @@ header {
     }
 
     &__content {
+        position: relative;
         display: flex;
         flex-direction: column;
         margin-top: -40px;
+        z-index: 2;
 
         @include mobile {
             width: 100%;
@@ -589,6 +591,33 @@ header {
             align-items: center;
             margin-top: initial;
         }
+
+        &_left-bottom {
+            width: 52%;
+            margin-top: 300px;
+
+            @include mobile {
+                margin-top: 207px;
+            }
+
+            @include tablet_md {
+                margin-top: 267px;
+            }
+
+            @include tablet {
+                width: 100%;
+            }
+
+            @include desktop {
+                width: 40%;
+            }
+
+            .title-block {
+                @include tablet {
+                    text-align: center;
+                }
+            }
+        }
     }
 
     .buttons-block {
@@ -628,12 +657,28 @@ header {
         }
     }
 
-    &__bg {
+    &__bg,
+    &__video-bg,
+    &__video-bg video {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
+    }
+
+    &__video-bg {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $gradient-3;
+        }
     }
 
     &__svg-bg {
@@ -766,7 +811,8 @@ nav {
 
 .advantages,
 .headquarters .content-block,
-.privacy-information {
+.privacy-information,
+.features-contact {
     position: relative;
     padding-top: 90px;
     background: $color-F4F8FF;
@@ -789,7 +835,8 @@ nav {
 }
 
 .advantages,
-.privacy-information {
+.privacy-information,
+.features-contact {
     .title-block {
 
         .title-block__title {
@@ -963,11 +1010,15 @@ nav {
         img {
             transform: scale(1);
             transition: 0.6s $ease-in-out-quart;
+            max-width: 64px;
+            max-height: 64px;
 
             @include tablet {
                 display: block;
                 width: 100%;
                 height: 100%;
+                max-width: initial;
+                max-height: initial;
             }
 
             &:hover {
@@ -1063,10 +1114,25 @@ nav {
     transform: scale(1);
     transition: 0.6s $ease-in-out-quart;
 
+    @include mobile_md {
+        width: 50px;
+        height: 50px;
+    }
+
+    @include mobile {
+        width: 55px;
+        height: 55px;
+    }
+
+    @include tablet_sm {
+        width: 60px;
+        height: 60px;
+    }
+
     &::before {
         content: '';
-        width: 14px;
-        height: 18px;
+        width: 20%;
+        height: 26%;
         margin-right: -4px;
         mask-image: url(../img/btn__play-icon.svg);
         mask-size: 100% 100%;
@@ -1082,6 +1148,303 @@ nav {
         &:before {
             background: $color-1990FD;
         }
+    }
+}
+
+.quotes,
+.video-slider {
+    .owl-nav {
+        display: flex;
+        justify-content: flex-end;
+
+        .owl-prev,
+        .owl-next {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0;
+            outline: none;
+            margin: 0;
+        }
+
+        .owl-prev {
+            margin-right: 20px;
+        }
+    }
+
+    .owl-dots {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        height: 40px;
+        padding: 0 30px;
+
+        .owl-dot {
+
+            span {
+                width: 100%;
+                height: 1px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        .counter {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+                font-family: "FuturaPT-Demi";
+                font-weight: 500;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .counter {
+        display: none;
+    }
+}
+
+.video-slider {
+    display: flex;
+    flex-direction: column;
+
+    &__videos {
+        width: 100%;
+    }
+
+    &__video {
+        position: relative;
+        display: none;
+        width: 100%;
+
+        video {
+            display: block;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    &__video-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $gradient-4;
+    }
+
+    &__titles {
+        position: absolute;
+        left: 10%;
+        top: 26px;
+        z-index: 2;
+
+        @include tablet_sm {
+            left: 5%;
+        }
+
+        @include tablet {
+            left: 8%;
+        }
+
+        @include desktop {
+            left: 5%;
+        }
+    }
+
+    &__title,
+    &__text-title {
+        font-family: 'Optima-Bold';
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 120%;
+        letter-spacing: 0.04em;
+    }
+
+    &__title {
+        display: none;
+        color: $color-ffffff;
+        text-align: left;
+
+        @include tablet_sm {
+            font-size: 16px;
+        }
+    }
+
+    &__text-title {
+        @include tablet_sm {
+            font-size: 22px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        width: 50%;
+        height: 100%;
+        background: $color-F4F8FF;
+
+        @include desktop {
+            width: 100%;
+            flex-direction: column-reverse;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 66%;
+        padding: 0 10% 0 5%;
+
+        @include tablet_sm {
+            padding: 35px 5% 35px 5%;
+        }
+
+        @include tablet {
+            padding: 35px 8% 35px 8%;
+        }
+
+        @include desktop {
+            width: 100%;
+            padding: 35px 5% 35px 5%;
+        }
+    }
+
+    &__next-video {
+        width: 34%;
+
+        @include tablet_sm {
+            padding: 0;
+        }
+
+        @include tablet {
+            padding: 0 8% 60px 8%;
+        }
+
+        @include desktop {
+            width: 100%;
+            padding: 0 5% 60px 5%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .owl-carousel {
+        width: 100%;
+        height: 174px;
+
+        @include desktop {
+            height: initial;
+            padding-top: 163px;
+        }
+
+        .owl-stage-outer,
+        .owl-stage,
+        .owl-item,
+        .item {
+            height: 100%;
+        }
+
+        .item {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .owl-nav {
+            align-items: flex-end;
+            background: $color-014F8E;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 174px;
+            padding-right: 29px;
+            padding-bottom: 29px;
+            margin: 0;
+
+            @include tablet_sm {
+                height: 128px;
+                padding-right: 5%;
+                padding-bottom: 20px;
+            }
+
+            @include tablet {
+                padding-right: 8%;
+            }
+
+            @include desktop {
+                height: 163px;
+                width: 100%;
+            }
+
+            .owl-prev,
+            .owl-next {
+                height: fit-content;
+            }
+        }
+
+        .owl-dots {
+            width: 15%;
+            position: absolute;
+            left: 5%;
+            top: 105px;
+
+            @include tablet_sm {
+                width: 54%;
+                top: 72px;
+                left: 5%;
+            }
+
+            @include tablet {
+                left: 8%;
+            }
+
+            @include desktop {
+                width: 23%;
+                top: 93px;
+            }
+
+            .owl-dot {
+                span {
+                    background: fade-out($color-ffffff, 0.5);
+                }
+
+                &.active {
+                    span {
+                        background: $color-ffffff;
+                    }
+                }
+            }
+        }
+
+        .counter {
+            span {
+                color: $color-ffffff;
+            }
+        }
+    }
+
+    .play-slider-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
     }
 }
 
@@ -1111,6 +1474,12 @@ nav {
 
         @include desktop {
             width: 100%;
+        }
+
+        &.hide-before {
+            &::before {
+                display: none;
+            }
         }
 
         &::before {
@@ -1292,10 +1661,8 @@ nav {
 
 
     .owl-nav {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 13%;
-        padding-bottom: 7%;
+        padding-right: 14%;
+        padding-bottom: 8%;
 
         @include tablet_sm {
             width: 90%;
@@ -1312,35 +1679,22 @@ nav {
             padding: 38px 0 50px 35%;
             justify-content: flex-start;
         }
-
-        .owl-prev,
-        .owl-next {
-            border: 0 !important;
-            background: transparent !important;
-            border-radius: 0;
-            outline: none;
-        }
     }
 
     .owl-dots {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        height: 40px;
         bottom: 5.3%;
         right: 46%;
-        padding: 0 30px;
         width: 38%;
 
         @include tablet_sm {
             right: initial;
             left: 5%;
             width: 54%;
-            bottom: 30px;
+            bottom: 27px;
         }
 
         @include desktop {
-            bottom: 56px;
+            bottom: 50px;
             right: 69%;
             width: 23%;
         }
@@ -1348,11 +1702,7 @@ nav {
         .owl-dot {
 
             span {
-                width: 100%;
-                height: 1px;
                 background: $color-E4ECFA;
-                margin-left: 0;
-                margin-right: 0;
             }
 
             &.active {
@@ -1361,28 +1711,7 @@ nav {
                 }
             }
         }
-
-        .counter {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            span {
-                font-family: "FuturaPT-Demi";
-                font-weight: 500;
-                font-size: 14px;
-            }
-        }
     }
-}
-
-.counter {
-    display: none;
 }
 
 .quote-author {
@@ -2168,93 +2497,6 @@ nav {
     }
 }
 
-footer {
-    display: flex;
-    align-items: center;
-    height: 135px;
-    background: $color-014F8E;
-
-    @include tablet {
-        height: 561px;
-        padding: 60px 0 80px 0;
-    }
-
-    nav {
-        @include tablet {
-            height: 100%;
-            flex-direction: column;
-        }
-    }
-
-    .menu {
-        @include tablet {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        li {
-            margin: 0;
-            border-bottom: 1px solid fade-out($color-ffffff, 0.6);
-            transition: 0.6s $ease-in-out-quart;
-
-            @include tablet {
-                width: fit-content;
-                margin-bottom: 54px;
-                border-bottom: 1px solid transparent;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-
-            &:first-child {
-                a {
-                    justify-content: flex-start;
-
-                    @include tablet {
-                        justify-content: center;
-                    }
-                }
-            }
-
-            &:last-child {
-                a {
-                    justify-content: flex-end;
-
-                    @include tablet {
-                        justify-content: center;
-                    }
-                }
-            }
-
-            &:hover {
-                border-bottom: 1px solid $color-ffffff;
-
-                a {
-                    font-family: "FuturaPT-Demi";
-                    font-weight: 500;
-
-                    @include tablet {
-                        font-family: "FuturaPT-Book";
-                        font-weight: normal;
-                    }
-                }
-            }
-
-            a {
-                display: flex;
-                justify-content: center;
-                width: 128px;
-                padding-bottom: 10px;
-
-                @include tablet {
-                    width: fit-content;
-                }
-            }
-        }
-    }
-}
-
 .content-contacts-block {
     &_margins {
         .content-contacts-block {
@@ -2412,11 +2654,13 @@ footer {
     }
 
     &__svg {
+        opacity: 0;
 
         path,
         rect {
             display: block;
             width: 100%;
+            fill: none;
         }
 
         rect {
@@ -2468,5 +2712,204 @@ footer {
         @include tablet_sm {
             top: -32px;
         }
+    }
+}
+
+.calendar {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 5%;
+    top: 107px;
+    width: 500px;
+
+    @include tablet_sm {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    @include tablet {
+        width: 100%;
+        padding-left: 8%;
+        padding-right: 8%;
+        position: initial;
+        right: initial;
+        top: initial;
+        background: $color-F4F8FF;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+
+        @include tablet {
+            max-width: 498px;
+        }
+    }
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 135px;
+    background: $color-014F8E;
+    color: $color-ffffff;
+
+    @include tablet {
+        height: 561px;
+        padding: 60px 0 80px 0;
+    }
+
+    a {
+        display: block;
+        color: $color-ffffff;
+
+        &:hover {
+            color: $color-F4F8FF;
+        }
+    }
+
+    nav {
+        @include tablet {
+            height: 100%;
+            flex-direction: column;
+        }
+    }
+
+    .menu {
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        li {
+            margin: 0;
+            border-bottom: 1px solid fade-out($color-ffffff, 0.6);
+            transition: 0.6s $ease-in-out-quart;
+
+            @include tablet {
+                width: fit-content;
+                margin-bottom: 54px;
+                border-bottom: 1px solid transparent;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            &:first-child {
+                a {
+                    justify-content: flex-start;
+
+                    @include tablet {
+                        justify-content: center;
+                    }
+                }
+            }
+
+            &:last-child {
+                a {
+                    justify-content: flex-end;
+
+                    @include tablet {
+                        justify-content: center;
+                    }
+                }
+            }
+
+            &:hover {
+                border-bottom: 1px solid $color-ffffff;
+
+                a {
+                    font-family: "FuturaPT-Demi";
+                    font-weight: 500;
+
+                    @include tablet {
+                        font-family: "FuturaPT-Book";
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            a {
+                display: flex;
+                justify-content: center;
+                width: 128px;
+                padding-bottom: 10px;
+
+                @include tablet {
+                    width: fit-content;
+                }
+
+                &:hover {
+                    color: $color-ffffff;
+                }
+            }
+        }
+    }
+}
+
+.thanks-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    padding: 75px 5% 52px 5%;
+
+    @include tablet_sm {
+        padding: 49px 5% 52px 5%;
+    }
+
+    @include tablet {
+        padding: 88px 8% 72px 8%;
+        flex-direction: column;
+    }
+
+    @include desktop {
+        padding: 75px 5% 12px 5%;
+    }
+
+    &__item {
+        font-family: "FuturaPT-Book";
+        font-size: 16px;
+        font-weight: normal;
+        width: 25%;
+
+        @include mobile_sm {
+            font-size: 14px;
+        }
+
+        @include tablet_sm {
+            font-size: 15px;
+        }
+
+        @include tablet {
+            width: 100%;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @include desktop {
+            text-align: center;
+            width: 50%;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__p {
+        &_bottom {
+            margin-top: 20px;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
     }
 }
