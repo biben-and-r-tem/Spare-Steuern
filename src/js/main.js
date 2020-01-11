@@ -226,7 +226,9 @@ $(document).ready(function () {
     $('.video-slider__title:first').show();
 
     $('.video-slider').each(function () {
-        var counter = $(this).find('.counter'),
+        var carosel = $(this),
+            counter = $(this).find('.counter'),
+            timeCounter = $(this).find('.time-counter'),
             dots = $(this).find('.owl-dots'),
             dot = $(this).find('.owl-dot'),
             nav = $(this).find('.owl-nav'),
@@ -234,6 +236,16 @@ $(document).ready(function () {
         counter.clone().appendTo(dots);
         dot.width(100 / dot.length + '%');
         title.prependTo(nav);
+        timeCounter.prependTo(nav);
+
+
+        function test() {
+            timeCounter.html(Math.round(carosel.find('.video-slider__video:first').find('video')[0].duration).toFixed(2));
+        };
+
+        setTimeout(function () {
+            test();
+        }, 3000);
     });
 
 
@@ -243,6 +255,13 @@ $(document).ready(function () {
         $('.video-slider__title').hide();
         $('.video-slider__title').eq(e.page.index).fadeIn(600);
         $(this).parent().find('.counter').clone().appendTo($(this).find('.owl-dots'));
+        $(this).parent().find('.time-counter').html(Math.round($(this).parent().find('.video-slider__video').eq(e.page.index).find('video')[0].duration).toFixed(2));
+
+        $(this).parent().find('.play-slider-btn').removeClass('playing');
+        for (var i = 0; i < $(this).parent().find('.video-slider__video video').length; i++) {
+            $(this).parent().find('.video-slider__video video')[i].pause();
+        }
+
     });
 
     $('.video-slider__video').each(function () {
@@ -259,8 +278,9 @@ $(document).ready(function () {
                 $(this).removeClass('playing');
             }
         });
-    });
 
+    });
+    // console.log($('.video-slider__video video')[1]);
 
     $('.show-hide-block').each(function () {
         var hiddenBlock = $(this).find('.show-hide-block__hiden'),
@@ -618,6 +638,30 @@ $(document).ready(function () {
 
 $(window).bind('resize load ready', function () {
 
+    if ($('.calendar').length) {
+
+        if ($(window).outerWidth() <= 480) {
+            if (!$('.cloned').length) {
+                $('.calendar').before('<div class="title-block cloned"><div class="title-block__title"></div>');
+                $('.cloned .title-block__title').html($('.main-top-block .title-block__title').html());
+                $('.main-top-block .title-block__subtitle').appendTo($('.cloned'));
+            }
+        } else {
+            $('.cloned .title-block__subtitle').appendTo($('.main-top-block .title-block'));
+            $('.cloned').remove();
+        }
+    };
+
+    if ($('.privacy-information').length) {
+        if ($(window).outerWidth() <= 480) {
+            if (!$('.privacy-information .title-block__subtitle').length) {
+                $('.main-top-block .title-block__subtitle').appendTo($('.privacy-information .title-block'));
+            }
+        } else {
+            $('.privacy-information .title-block__subtitle').appendTo($('.main-top-block .title-block'));
+        }
+    };
+
     $('.content-block').each(function () {
         var titleBlock = $(this).find('.title-block'),
             contentText = $(this).find('.content-block__text'),
@@ -743,6 +787,16 @@ $(window).bind('resize load ready', function () {
         rect.attr('y', height).attr('width', width);
         $('.main-top-block__svg-bg').hide();
         $(this).find('path').attr('d', 'M' + width + ' ' + height + 'H1.' + percentCalcPlus(width, 6675.91) + 'e-05L0 ' + percentCalcMinus(height, 1.06) + 'C' + percentCalcMinus(width, 57.4653) + ' -' + percentCalcMinus(height, 18.79) + ' ' + percentCalcMinus(width, 18.5763) + ' ' + percentCalcMinus(height, 74.32) + ' ' + width + '  ' + percentCalcMinus(height, 1.06) + 'L' + width + ' ' + height + 'Z');
+
+        function isiPhone() {
+            return (
+                (navigator.platform.indexOf("iPhone") != -1) ||
+                (navigator.platform.indexOf("iPod") != -1)
+            );
+        }
+        if (isiPhone()) {
+            $(this).hide();
+        }
     });
 });
 

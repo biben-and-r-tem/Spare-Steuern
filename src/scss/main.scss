@@ -1255,6 +1255,7 @@ nav {
 
         @include tablet_sm {
             left: 5%;
+            top: 16px;
         }
 
         @include tablet {
@@ -1441,6 +1442,28 @@ nav {
         .counter {
             span {
                 color: $color-ffffff;
+            }
+        }
+
+        .time-counter {
+            position: absolute;
+            top: 23px;
+            right: 29px;
+            color: $color-ffffff;
+            font-size: 16px;
+
+            @include tablet_sm {
+                font-size: 14px;
+                right: 5%;
+                top: 15px;
+            }
+
+            @include tablet {
+                right: 8%;
+            }
+
+            @include desktop {
+                right: 5%;
             }
         }
     }
@@ -2645,6 +2668,12 @@ nav {
         }
     }
 
+    .title-block {
+        &__subtitle {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    }
 
 }
 
@@ -2751,6 +2780,19 @@ nav {
             max-width: 498px;
         }
     }
+}
+
+.cloned {
+    background: $color-F4F8FF;
+    padding: 45px 5% 0 5%;
+
+    .title-block {
+        &__subtitle {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    }
+
 }
 
 footer {

@@ -1504,6 +1504,14 @@ nav {
   color: #ffffff;
 }
 
+.video-slider .owl-carousel .time-counter {
+  position: absolute;
+  top: 23px;
+  right: 29px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
 .video-slider .play-slider-btn {
   position: absolute;
   top: 0;
@@ -2423,6 +2431,11 @@ nav {
   font-weight: normal;
 }
 
+.privacy-information .title-block__subtitle {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
 .survey {
   position: relative;
   padding-top: 44px;
@@ -2480,6 +2493,16 @@ nav {
 .calendar img {
   display: block;
   width: 100%;
+}
+
+.cloned {
+  background: #F4F8FF;
+  padding: 45px 5% 0 5%;
+}
+
+.cloned .title-block__subtitle {
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 footer {
@@ -2696,6 +2719,10 @@ footer .menu li a:hover {
   .video-slider .owl-carousel .owl-dots {
     width: 23%;
     top: 93px;
+  }
+
+  .video-slider .owl-carousel .time-counter {
+    right: 5%;
   }
 
   .quotes {
@@ -2968,6 +2995,10 @@ footer .menu li a:hover {
 
   .video-slider .owl-carousel .owl-dots {
     left: 8%;
+  }
+
+  .video-slider .owl-carousel .time-counter {
+    right: 8%;
   }
 
   .quote-author__name {
@@ -3299,6 +3330,7 @@ footer .menu li a:hover {
 
   .video-slider__titles {
     left: 5%;
+    top: 16px;
   }
 
   .video-slider__title {
@@ -3327,6 +3359,12 @@ footer .menu li a:hover {
     width: 54%;
     top: 72px;
     left: 5%;
+  }
+
+  .video-slider .owl-carousel .time-counter {
+    font-size: 14px;
+    right: 5%;
+    top: 15px;
   }
 
   .quotes {
