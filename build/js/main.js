@@ -26208,7 +26208,7 @@ $(window).bind("load resize ready scroll", function () {
         navLink = nav.find('li a'),
         navSpan = navLink.find('span'),
         navLogo = nav.find('.logo-svg'),
-        navLogoFilter = nav.find('#filter0_b'),
+        navLogoFilter = nav.find('.logo svg g'),
         navLogoText = nav.find('.logo svg path:eq(0)'),
         navBtn = nav.find('.btn'),
         scrollTop = $(document).scrollTop(),
