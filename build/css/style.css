@@ -864,6 +864,7 @@ header .mob-menu .phone.btn {
   bottom: 0;
   width: 100%;
   height: 44px;
+  z-index: 2;
 }
 
 .main-top-block__svg-bg path {
