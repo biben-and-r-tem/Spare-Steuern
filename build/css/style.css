@@ -907,6 +907,10 @@ nav {
   height: 100%;
 }
 
+.logo svg path {
+  fill: #ffffff;
+}
+
 .menu {
   display: -webkit-box;
   display: -webkit-flex;
