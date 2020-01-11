@@ -828,6 +828,7 @@ header .mob-menu .phone.btn {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+  z-index: 2;
 }
 
 .main-top-block__bg,
@@ -844,6 +845,7 @@ header .mob-menu .phone.btn {
 
 .main-top-block__video-bg {
   position: relative;
+  z-index: 1;
 }
 
 .main-top-block__video-bg::after {
