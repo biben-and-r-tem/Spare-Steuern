@@ -2670,8 +2670,12 @@ nav {
 
     .title-block {
         &__subtitle {
+            font-family: "FuturaPT-Book";
+            font-weight: normal;
             font-size: 14px;
             margin-top: 8px;
+            line-height: 160%;
+            letter-spacing: 0.012em;
         }
     }
 
@@ -2788,8 +2792,12 @@ nav {
 
     .title-block {
         &__subtitle {
+            font-family: "FuturaPT-Book";
+            font-weight: normal;
             font-size: 14px;
             margin-top: 8px;
+            line-height: 160%;
+            letter-spacing: 0.012em;
         }
     }
 
@@ -2904,6 +2912,10 @@ footer {
     width: 100%;
     padding: 75px 5% 52px 5%;
 
+    @include mobile {
+        padding: 133px 5% 52px 5%;
+    }
+
     @include tablet_sm {
         padding: 49px 5% 52px 5%;
     }
@@ -2958,5 +2970,10 @@ footer {
         left: 0;
         right: 0;
         margin: auto;
+
+        @include mobile {
+            width: 139px;
+            top: 53px;
+        }
     }
 }

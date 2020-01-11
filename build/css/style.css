@@ -2432,8 +2432,12 @@ nav {
 }
 
 .privacy-information .title-block__subtitle {
+  font-family: "FuturaPT-Book";
+  font-weight: normal;
   font-size: 14px;
   margin-top: 8px;
+  line-height: 160%;
+  letter-spacing: 0.012em;
 }
 
 .survey {
@@ -2501,8 +2505,12 @@ nav {
 }
 
 .cloned-title .title-block__subtitle {
+  font-family: "FuturaPT-Book";
+  font-weight: normal;
   font-size: 14px;
   margin-top: 8px;
+  line-height: 160%;
+  letter-spacing: 0.012em;
 }
 
 footer {
@@ -3650,6 +3658,15 @@ footer .menu li a:hover {
 
   .survey__bg {
     topt: -28px;
+  }
+
+  .thanks-contacts {
+    padding: 133px 5% 52px 5%;
+  }
+
+  .thanks-contacts .logo {
+    width: 139px;
+    top: 53px;
   }
 }
 
