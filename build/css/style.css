@@ -2495,12 +2495,12 @@ nav {
   width: 100%;
 }
 
-.cloned {
+.cloned-title {
   background: #F4F8FF;
   padding: 45px 5% 0 5%;
 }
 
-.cloned .title-block__subtitle {
+.cloned-title .title-block__subtitle {
   font-size: 14px;
   margin-top: 8px;
 }

@@ -26096,14 +26096,14 @@ $(window).bind('resize load ready', function () {
     if ($('.calendar').length) {
 
         if ($(window).outerWidth() <= 480) {
-            if (!$('.cloned').length) {
-                $('.calendar').before('<div class="title-block cloned"><div class="title-block__title"></div>');
-                $('.cloned .title-block__title').html($('.main-top-block .title-block__title').html());
+            if (!$('.cloned-title').length) {
+                $('.calendar').before('<div class="title-block cloned-title"><div class="title-block__title"></div>');
+                $('.cloned-title .title-block__title').html($('.main-top-block .title-block__title').html());
                 $('.main-top-block .title-block__subtitle').appendTo($('.cloned'));
             }
         } else {
-            $('.cloned .title-block__subtitle').appendTo($('.main-top-block .title-block'));
-            $('.cloned').remove();
+            $('.cloned-title .title-block__subtitle').appendTo($('.main-top-block .title-block'));
+            $('.cloned-title').remove();
         }
     };
 
