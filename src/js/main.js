@@ -753,6 +753,7 @@ $(window).bind("load resize ready scroll", function () {
         navLink = nav.find('li a'),
         navSpan = navLink.find('span'),
         navLogo = nav.find('.logo-svg'),
+        navLogoFilter = nav.find('#filter0_b'),
         navLogoText = nav.find('.logo svg path:eq(0)'),
         navBtn = nav.find('.btn'),
         scrollTop = $(document).scrollTop(),
@@ -767,6 +768,10 @@ $(window).bind("load resize ready scroll", function () {
                 ease: Power1.easeInOut
             })
             .to(navLogo, 0.6, {
+                fill: '#0286FF',
+                ease: Power1.easeInOut
+            }, '-=0.6')
+            .to(navLogoFilter, 0.6, {
                 fill: '#0286FF',
                 ease: Power1.easeInOut
             }, '-=0.6')
@@ -794,6 +799,10 @@ $(window).bind("load resize ready scroll", function () {
                 ease: Power1.easeInOut
             })
             .to(navLogo, 0.6, {
+                fill: '#0286FF',
+                ease: Power1.easeInOut
+            }, '-=0.6')
+            .to(navLogoFilter, 0.6, {
                 fill: '#0286FF',
                 ease: Power1.easeInOut
             }, '-=0.6')
@@ -832,6 +841,10 @@ $(window).bind("load resize ready scroll", function () {
                         ease: Power1.easeInOut
                     })
                     .to(navLogo, 0.6, {
+                        fill: '#fff',
+                        ease: Power1.easeInOut
+                    }, '-=0.6')
+                    .to(navLogoFilter, 0.6, {
                         fill: '#fff',
                         ease: Power1.easeInOut
                     }, '-=0.6')
