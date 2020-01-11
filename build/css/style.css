@@ -2438,7 +2438,6 @@ nav {
 .survey__svg path,
 .survey__svg rect {
   display: block;
-  width: 100%;
   fill: none;
 }
 
