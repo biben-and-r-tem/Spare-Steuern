@@ -3357,6 +3357,10 @@ footer .menu li a:hover {
     padding: 0;
   }
 
+  .video-slider .owl-carousel {
+    padding-top: 128px;
+  }
+
   .video-slider .owl-carousel .owl-nav {
     height: 128px;
     padding-right: 5%;

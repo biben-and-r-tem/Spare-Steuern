@@ -217,6 +217,7 @@ $(document).ready(function () {
     $('.video-slider').each(function () {
         var carosel = $(this),
             counter = $(this).find('.counter'),
+            videoPlayer = carosel.find('.video-slider__video:first').find('video')[0],
             timeCounter = $(this).find('.time-counter'),
             dots = $(this).find('.owl-dots'),
             dot = $(this).find('.owl-dot'),
@@ -227,9 +228,8 @@ $(document).ready(function () {
         title.prependTo(nav);
         timeCounter.prependTo(nav);
 
-
         function test() {
-            timeCounter.html(Math.floor(carosel.find('.video-slider__video:first').find('video')[0].duration).toFixed(2));
+            timeCounter.html(videoTime(videoPlayer.duration));
         };
 
         setTimeout(function () {
@@ -237,14 +237,18 @@ $(document).ready(function () {
         }, 3000);
     });
 
-
     $('.video-slider .owl-carousel').on('changed.owl.carousel resized.owl.carousel', function (e) {
         $('.video-slider__video').hide();
         $('.video-slider__video').eq(e.page.index).fadeIn(600);
         $('.video-slider__title').hide();
         $('.video-slider__title').eq(e.page.index).fadeIn(600);
         $(this).parent().find('.counter').clone().appendTo($(this).find('.owl-dots'));
-        $(this).parent().find('.time-counter').html(Math.round($(this).parent().find('.video-slider__video').eq(e.page.index).find('video')[0].duration).toFixed(2));
+
+        var timeCounter = $(this).parent().find('.time-counter'),
+            videoPlayer = $(this).parent().find('.video-slider__video').eq(e.page.index).find('video')[0];
+
+        timeCounter.html(videoTime(videoPlayer.duration));
+
 
         $(this).parent().find('.play-slider-btn').removeClass('playing');
         for (var i = 0; i < $(this).parent().find('.video-slider__video video').length; i++) {
@@ -252,6 +256,21 @@ $(document).ready(function () {
         }
 
     });
+
+    function videoTime(time) {
+        time = Math.floor(time);
+        var minutes = Math.floor(time / 60);
+        var seconds = Math.floor(time - minutes * 60);
+        var minutesVal = minutes;
+        var secondsVal = seconds;
+        if (minutes < 10) {
+            minutesVal = '0' + minutes;
+        }
+        if (seconds < 10) {
+            secondsVal = '0' + seconds;
+        }
+        return minutesVal + ':' + secondsVal;
+    }
 
     $('.video-slider__video').each(function () {
         var video = $(this).find('video'),
@@ -269,7 +288,6 @@ $(document).ready(function () {
         });
 
     });
-    // console.log($('.video-slider__video video')[1]);
 
     $('.show-hide-block').each(function () {
         var hiddenBlock = $(this).find('.show-hide-block__hiden'),
@@ -417,10 +435,6 @@ $(document).ready(function () {
                 reverse: false
             })
 
-            // .setClassToggle(this, 'active')
-            .on('enter leave', () => {
-                $(this).toggleClass('fadeIn');
-            })
 
             // .addIndicators({
             //     name: 'fade-scene',
