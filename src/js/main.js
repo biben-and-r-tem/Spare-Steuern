@@ -291,15 +291,26 @@ $(document).ready(function () {
 
     $('.show-hide-block').each(function () {
         var hiddenBlock = $(this).find('.show-hide-block__hiden'),
+            hiddenBlockItem = $(this).find('.show-hide-block__hiden .show-hide-block__item'),
             blockContent = $(this).find('.show-hide-block__content'),
             btn = $(this).find('.show-hide-block__btn');
 
+        var showHideTl = new TimelineMax({
+                paused: true
+            }),
+            $window = $(window);
+
+        showHideTl
+            .staggerTo(hiddenBlockItem, 0.1, {
+                display: 'block'
+            }, 0.05)
+            .staggerTo(hiddenBlockItem, 0.2, {
+                autoAlpha: 1,
+                ease: Linear.easeNone
+            }, 0.05, 0);
+
         btn.on('click', 'a', function (e) {
             e.preventDefault();
-
-            // var showHideTl = new TimelineMax(),
-            //     $window = $(window);
-            var showHideTl = new TimelineMax();
 
             hiddenBlock.toggleClass('visible');
             blockContent.toggleClass('hide-before');
@@ -307,42 +318,19 @@ $(document).ready(function () {
             if (hiddenBlock.hasClass('visible')) {
                 $(this).find('i').attr('class', 'btn__to-top');
 
-                showHideTl
-                    .to('.show-hide-block__hiden', 2, {
-                        maxHeight: 10000,
-                        ease: Linear.easeNone
-                    }, 0)
-                    .to('.show-hide-block__hiden', 1, {
-                        autoAlpha: 1,
-                        ease: Linear.easeNone
-                    }, 0)
-                // .to($window, 1, {
-                //     scrollTo: {
-                //         y: blockContent.offset().top,
-                //         autoKill: true
-                //     },
-                //     ease: Circ.easeOut
-                // }, 0);
+                showHideTl.play()
+
+                    .to($window, 0.5, {
+                        scrollTo: {
+                            y: $(window).scrollTop(),
+                            autoKill: true
+                        },
+                        ease: Circ.easeOut
+                    });
 
             } else {
                 $(this).find('i').attr('class', 'btn__to-bottom');
-
-                showHideTl
-                    .to('.show-hide-block__hiden', 0.8, {
-                        maxHeight: 0,
-                        ease: Power1.easeOut
-                    })
-                    .to('.show-hide-block__hiden', 0.6, {
-                        autoAlpha: 0,
-                        ease: Linear.easeNone
-                    }, 0)
-                // .to($window, 2, {
-                //     scrollTo: {
-                //         y: blockContent.offset().top,
-                //         autoKill: true
-                //     },
-                //     ease: Circ.easeOut
-                // }, '-=0.3');
+                showHideTl.reverse();
             }
         });
     });

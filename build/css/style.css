@@ -2017,10 +2017,10 @@ nav {
   visibility: hidden;
 }
 
-.show-hide-block__hiden {
-  max-height: 0;
+.show-hide-block__hiden .show-hide-block__item {
   opacity: 0;
   visibility: hidden;
+  display: none;
 }
 
 .show-hide-block__item {

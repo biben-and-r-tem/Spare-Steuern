@@ -2218,9 +2218,14 @@ nav {
     }
 
     &__hiden {
-        max-height: 0;
-        opacity: 0;
-        visibility: hidden;
+
+        .show-hide-block {
+            &__item {
+                opacity: 0;
+                visibility: hidden;
+                display: none;
+            }
+        }
     }
 
     &__item {
