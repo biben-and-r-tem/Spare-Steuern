@@ -722,8 +722,8 @@ $(window).bind('resize load ready', function () {
         var tabsList = $(this).find('.tabs-list'),
             tabsLink = $(this).find('.tabs-list__link'),
             tabsLinkA = tabsLink.find('a'),
-            tabsContent = $(this).find('.tabs-content');
-
+            tabsContent = $(this).find('.tabs-content'),
+            navHeight = $('header nav').outerHeight();
 
         tabsLinkA.click(function (e) {
             e.preventDefault();
@@ -731,10 +731,31 @@ $(window).bind('resize load ready', function () {
             if ($(this).parent().hasClass('active')) {
                 return false;
             } else {
+                var tabsTl = new TimelineMax(),
+                    tabsContentDiv = $($(this).attr('href')).find('.tabs-content__item>div');
+
                 tabsLink.removeClass('active');
                 $(this).parent().addClass('active');
                 tabsContent.removeClass('active');
                 $($(this).attr('href')).addClass('active');
+
+
+                tabsTl
+                    .to(tabsContentDiv, 0, {
+                        autoAlpha: 0,
+                        y: 12
+                    })
+                    .to($(window), 0.5, {
+                        scrollTo: {
+                            y: $($(this).attr('href')).offset().top - navHeight,
+                            autoKill: true
+                        },
+                        ease: Circ.easeOut
+                    }, 0)
+                    .staggerTo(tabsContentDiv, 0.5, {
+                        autoAlpha: 1,
+                        y: 0
+                    }, 0.2)
 
                 return false;
             }
